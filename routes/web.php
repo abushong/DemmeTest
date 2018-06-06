@@ -20,6 +20,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('login/github', 'Auth\LoginController@redirectToProvider');
+
+Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
+
 Route::get('/home', function(){
 	$tasks = Task::orderBy('created_at', 'asc')->get();
 
